@@ -1,0 +1,5 @@
+target/
+*.log
+CompetitorsDB/
+*.zip
+nbproject/private/

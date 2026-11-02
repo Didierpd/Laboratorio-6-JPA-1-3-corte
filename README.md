@@ -1,14 +1,7 @@
-# JAX-RS Template Application
+# Laboratorio 6 JPA-1 - 3 corte
 
-This is a template for a lightweight RESTful API using JAX-RS. The sample code is a call for getting the current time.
-    
-## Running the application locally
+Autor: Didier Perilla.
 
-First build with:
+Solución del laboratorio sobre el [código base del curso](https://github.com/gpedrazag/caso-JPA).
 
-    $mvn clean install
-
-Then run it with:
-
-    $ java -cp target/classes:target/dependency/* com.example.Main
-
+Las instrucciones de ejecución, ejemplos de peticiones y la explicación solicitada sobre `@OneToMany` están en [readme.txt](readme.txt).

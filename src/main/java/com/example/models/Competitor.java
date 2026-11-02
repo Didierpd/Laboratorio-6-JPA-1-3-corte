@@ -5,12 +5,38 @@
  */
 
 package com.example.models;
+import javax.persistence.*;
 
 /**
  *
  * @author Mauricio
  */
-public class Competitor{
+@Entity
+@Table(name = "COMPETITOR")
+public class Competitor implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name="create_at", nullable=false, updatable=false) @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Calendar createdAt;
+    @Column(name="updated_at", nullable=false) @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Calendar updatedAt;
+    @Column(nullable=false, length=256)
+    private String password;
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="competitor")
+    private java.util.Set<Producto> products = new java.util.LinkedHashSet<Producto>();
+    @PrePersist private void creationTimestamp() { createdAt = java.util.Calendar.getInstance(); updatedAt = (java.util.Calendar) createdAt.clone(); }
+    @PreUpdate private void updateTimestamp() { updatedAt = java.util.Calendar.getInstance(); }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id=id; }
+    public java.util.Calendar getCreatedAt() { return createdAt; }
+    public java.util.Calendar getUpdatedAt() { return updatedAt; }
+    @com.fasterxml.jackson.annotation.JsonIgnore
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password=password; }
+    public java.util.Set<Producto> getProducts() { return products; }
+    public void addProduct(Producto product) { products.add(product); product.setCompetitor(this); }
+
      
     
     private String name;
@@ -23,6 +49,7 @@ public class Competitor{
     
     private String cellphone;
     
+    @Column(nullable=false, unique=true)
     private String address;
     
     private String city;

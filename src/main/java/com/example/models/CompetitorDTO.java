@@ -11,6 +11,10 @@ package com.example.models;
  * @author Mauricio
  */
 public class CompetitorDTO {
+    private String password;
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password=password; }
+
  
     private String name;
     

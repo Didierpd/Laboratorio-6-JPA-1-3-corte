@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="CompetitorsPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.example.models.Competitor</class>
+        <class>com.example.models.Producto</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/CompetitorsDB;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="app"/>
+            <property name="javax.persistence.jdbc.password" value="app"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.weaving" value="false"/>
+            <property name="eclipselink.logging.level" value="WARNING"/>
+        </properties>
+    </persistence-unit>
+</persistence>

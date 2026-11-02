@@ -1,0 +1,20 @@
+Laboratorio 6 JPA-1 - 3 corte
+Verificación realizada el 2 de noviembre de 2026.
+
+1. mvn -B package: BUILD SUCCESS con OpenJDK 21.
+2. JUnit: 2 pruebas ejecutadas; 0 fallos; 0 errores; 0 omitidas.
+   - Registro, hash, login correcto, contraseña inválida, correo inexistente, intento de inyección, datos incompletos, duplicados y orden por apellido.
+   - Relación Competitor/Producto persistida en Derby, clave foránea real, cascada y callbacks de fechas.
+3. Prueba HTTP con Java 8, Jetty y Derby de red:
+   LAB_JAVA=/home/didier1/Aplicaciones/java8/bin/java python3 scripts/verificar_http.py
+   - Página inicial: HTTP 200.
+   - Registro: HTTP 200 con ID generado.
+   - Consulta posterior desde otra petición: HTTP 200 con el registro persistido.
+   - Login válido: HTTP 200 con el concursante y sin contraseña.
+   - Contraseña incorrecta: HTTP 401.
+   - Correo inexistente: HTTP 401.
+   - Login vacío: HTTP 401.
+   - Registro con correo duplicado: HTTP 409.
+   - Registro vacío: HTTP 400.
+
+Los escenarios HTTP usan una base temporal aislada que se elimina al terminar. El proyecto no incluye usuarios ni contraseñas reales ni bases de datos de prueba.
